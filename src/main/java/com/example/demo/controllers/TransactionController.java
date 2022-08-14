@@ -3,33 +3,25 @@ import com.example.demo.models.Transaction;
 import com.example.demo.services.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.servlet.WebMvcProperties;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Optional;
 
-@RestController
-@RequestMapping("transactions")
+@Controller
 public class TransactionController {
     private WebMvcProperties.MatchingStrategy matchingStrategy = WebMvcProperties.MatchingStrategy.PATH_PATTERN_PARSER;
 
     @Autowired
     TransactionService transactionService;
-    @GetMapping
-    public ArrayList<Transaction> getTransactions(){
-        return transactionService.getAllTransactions();
+    @GetMapping("/transactions")
+    public String transactions(){
+        return "listaIngresos";
     }
-    @PostMapping
-    public Transaction createTransaction(@RequestBody Transaction transaction){
-        return transactionService.createTransaction(transaction);
+    @GetMapping("/transactions/create")
+    public String create(){
+        return "formIngreso";
     }
-    @GetMapping(path = {"/{id}"})
-    public Optional<Transaction> getTransactionById (@PathVariable("id") Long id){
-        return transactionService.getTransactionById(id);
-    }
-    @DeleteMapping(path = {"/{id}"})
-    public String deleteTransaction (@PathVariable ("id") Long id){
-        boolean ok = transactionService.deleteTransaction(id);
-        return  ok ? "Eliminado con exito" : "No se pudo eliminar";
-    }
+
 }

@@ -6,32 +6,25 @@ import com.example.demo.services.EmployeeService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.servlet.WebMvcProperties;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Optional;
 
-@RestController
-@RequestMapping("/employees")
+@Controller
 public class EmployeeController {
     private WebMvcProperties.MatchingStrategy matchingStrategy = WebMvcProperties.MatchingStrategy.PATH_PATTERN_PARSER;
     @Autowired
     EmployeeService employeeService;
-    @GetMapping
-    public ArrayList<Employee> getEmployees(){
-        return employeeService.getAllEmployees();
+    @GetMapping("/employees")
+    public String employees(){
+        return "listaUsuarios";
     }
-    @PostMapping
-    public Employee createEmployee(@RequestBody Employee employee){
-        return employeeService.createEmployee(employee);
+    @GetMapping("/employees/create")
+    public String craate(){
+        return "formEmployee";
     }
-    @GetMapping(path = {"/{id}"})
-    public Optional<Employee> getEmployeeById (@PathVariable("id") Long id){
-        return employeeService.getEmployeeById(id);
-    }
-    @DeleteMapping(path = {"/{id}"})
-    public String deleteEmployee (@PathVariable ("id") Long id){
-        boolean ok = employeeService.deleteEmployee(id);
-        return  ok ? "Eliminado con exito" : "No se pudo eliminar";
-    }
+
+
 }

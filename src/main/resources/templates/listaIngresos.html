@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Home</title>
+  <link rel="stylesheet" th:href="@{/css/home.css}"/>
+</head>
+<body>
+<div class="container">
+  <div class="container-nav">
+    <a th:href="@{/transactions}">Ingresos y Egresos</a>
+    <a th:href="@{/employees}">Usuarios</a>
+    <a th:href="@{/enterprices}">Empresas</a>
+  </div>
+  <div class="container-main">
+    <div class="header-table">
+      <h2>Sistema de Gestion de ingresos</h2>
+      <h4>Ingresos y Engresos</h4>
+      <a th:href="@{/transactions/create}">Nuevo</a>
+    </div>
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">Concepto</th>
+        <th scope="col">Monto</th>
+        <th scope="col">Fecha</th>
+        <th scope="col">Usuario</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th>vfsd</th>
+        <th>sdfsd</th>
+        <th>sdfsd</th>
+        <th>sfddfs</th>
+        <th>
+          <button>Editar</button>
+        </th>
+        <th>
+          <button>Eliminar</button>
+        </th>
+      </tr>
+      </tbody>
+    </table>
+    <div class="footer-table">
+      <input disabled placeholder="Total" >
+    </div>
+  </div>
+</div>
+</body>
+</html>

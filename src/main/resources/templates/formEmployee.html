@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Home</title>
+  <link rel="stylesheet" th:href="@{/css/home.css}"/>
+</head>
+<body>
+<div class="container">
+  <div class="container-nav">
+    <a th:href="@{/transactions}">Ingresos y Egresos</a>
+    <a th:href="@{/employees}">Usuarios</a>
+    <a th:href="@{/enterprices}">Empresas</a>
+  </div>
+  <div class="container-main">
+
+    <form >
+      <h3>Nuevo Usuario</h3>
+      <div class="mb-3">
+        <label for="cedula" class="form-label ">Cédula</label>
+        <input type="text" class="form-control form-control-sm" id="cedula">
+        <small ></small>
+      </div>
+      <div class="mb-3">
+        <label >Rol</label>
+        <select >
+          <option>1</option>
+          <option>2</option>
+
+        </select>
+      </div>
+      <input type="submit" value="Registrar"/>
+    </form>
+
+  </div>
+</div>
+</body>
+</html>
